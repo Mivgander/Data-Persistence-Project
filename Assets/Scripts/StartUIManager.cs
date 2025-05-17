@@ -16,11 +16,15 @@ public class StartUIManager : MonoBehaviour
     {
         startButton.interactable = false;
         playerNameField.onValueChanged.AddListener(OnNameChange);
+        if (DataManager.Instance.playerName != "")
+        {
+            playerNameField.text = DataManager.Instance.playerName;
+        }
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void OnNameChange(string newPlayerName)
@@ -37,6 +41,11 @@ public class StartUIManager : MonoBehaviour
     }
 
     public void HighscoreScene()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void SettingsScene()
     {
         SceneManager.LoadScene(1);
     }

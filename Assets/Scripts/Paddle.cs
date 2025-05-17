@@ -6,11 +6,18 @@ public class Paddle : MonoBehaviour
 {
     public float Speed = 2.0f;
     public float MaxMovement = 2.0f;
-    
+
+    private Renderer tintRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        tintRenderer = GetComponent<Renderer>();
+
+        if (SettingsManager.Instance != null)
+        {
+            SetColor(SettingsManager.Instance.paddleColor);
+        }
     }
 
     // Update is called once per frame
@@ -27,5 +34,10 @@ public class Paddle : MonoBehaviour
             pos.x = -MaxMovement;
 
         transform.position = pos;
+    }
+
+    private void SetColor(Color color)
+    {
+        tintRenderer.material.color = color;
     }
 }
